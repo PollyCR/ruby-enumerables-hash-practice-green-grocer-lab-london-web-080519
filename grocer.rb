@@ -53,6 +53,7 @@ def checkout(cart)
   
   total = 0.00
   discounted_cart.keys.each do |item|
+    total += discounted_cart[item][:price]
   
   
 end 
