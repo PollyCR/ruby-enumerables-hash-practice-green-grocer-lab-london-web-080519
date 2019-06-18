@@ -1,5 +1,5 @@
 def consolidate_cart(cart)
- consolidated_cart = {}
+ consolidatedt = {}
   cart.each do |item|
     if consolidated_cart[item.keys[0]]
       consolidated_cart[item.keys[0]][:count] += 1
@@ -11,7 +11,7 @@ def consolidate_cart(cart)
       }
     end
   end
-  consolidated_cart
+  consolidated
 end
 
 def apply_coupons(cart, coupons)
@@ -47,13 +47,13 @@ end
 
 
 def checkout(cart, coupons)
-  consol_cart = consolidate_cart(cart)
-  cart_with_coupons_applied = apply_coupons(consol_cart, coupons)
-  cart_with_discounts_applied = apply_clearance(cart_with_coupons_applied)
+  consolidated_cart = consolidate_cart(cart)
+  couponed_cart = apply_coupons(consolidated_cart, coupons)
+  discounted_cart = apply_clearance(couponed_cart)
 
   total = 0.0
-  cart_with_discounts_applied.keys.each do |item|
-    total += cart_with_discounts_applied[item][:price]*cart_with_discounts_applied[item][:count]
+  couponed_cart.keys.each do |item|
+    total += discounted_cart[item][:price]*discounted_cart[item][:count]
   end
   total > 100.00 ? (total * 0.90).round : total
 end
