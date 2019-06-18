@@ -55,7 +55,7 @@ def checkout(cart)
   discounted_cart.keys.each do |item|
     total += discounted_cart[item][:price]*discounted_cart[item][:count]
   end 
-  total > 100 ? (total * 0.9(float(2))
+  total > 100 ? (total * 0.9).float
   
   
 end 
