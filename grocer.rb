@@ -54,6 +54,8 @@ def checkout(cart)
   total = 0.00
   discounted_cart.keys.each do |item|
     total += discounted_cart[item][:price]*discounted_cart[item][:count]
+  end 
+  total > 100 ? 
   
   
 end 
